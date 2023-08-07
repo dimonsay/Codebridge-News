@@ -1,0 +1,19 @@
+<div class="container" *ngIf="news">
+    <div class="preview-image" [style.backgroundImage]="'url(' + news.image_url + ')'"></div>
+
+    <div class="news-wrapper">
+
+        <div class="content">
+            <div class="title">{{news.title}}</div>
+
+            <div class="text-content">
+                {{news.summary}}
+            </div>
+        </div>
+
+        <a routerLink="">
+            <img src="../../assets/right-arrow.svg" style="rotate: 180deg;" alt="">
+            Back to news
+        </a>
+    </div>
+</div>

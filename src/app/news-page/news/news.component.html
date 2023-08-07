@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="results">
+        Results:
+        {{results}}
+    </div>
+
+    <div class="article-container">
+        <mat-card class="article card-container" *ngFor="let article of newsList">
+            <div class="preview-image" [style.backgroundImage]="'url(' + article.image_url + ')'" mat-card-image></div>
+            <mat-card-content>
+                <mat-card-subtitle class="publish-date">
+                    <img src="../../assets/callendar.svg" alt="calendar">
+                    {{article.published_at | dateFormat }}
+                </mat-card-subtitle>
+
+                <mat-card-title [innerHTML]="sanitizeHtml(article.title | highlight: filterKey)"></mat-card-title>
+
+                <div class="description" [innerHTML]="sanitizeHtml(article.summary | highlight: filterKey | summary: 100)"></div>
+
+                <a class="read-more" [routerLink]="['/news', article.id]">
+                    Read more
+                    <img src="../../assets/right-arrow.svg" alt="">
+                </a>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
